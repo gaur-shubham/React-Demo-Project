@@ -1,4 +1,4 @@
-//import logo from './logo.svg';
+
 import './App.css';
 import Navbar from './components/Navbar';
 import MyAppTextform from './components/MyAppTextForm';
@@ -30,12 +30,10 @@ function App() {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light Mode Enabled", "success");
-      document.title = 'My App - Light Mode';
     } else {
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
       showAlert("Dark Mode Enabled", "success");
-      document.title = 'My App - Dark Mode';
     }
   }
   return (
@@ -45,14 +43,15 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route exact path="/about" element={<About />} />
+            <Route exact path="/about" element={
+              <About mode={mode}/>
+              } />
             <Route exact path="/" element={
               <MyAppTextform heading="Enter the text to Analyze" mode={mode} showAlert={showAlert} />
             } />
           </Routes>
         </div>
       </Router>
-      {/* <About/> */}
     </>
   );
 }
